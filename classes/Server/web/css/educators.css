@@ -1,0 +1,66 @@
+.selection-continer{
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.educator-selection{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+p{
+  font-style: italic;
+  text-align: center;
+}
+.ed-nav-button{
+  font-size: 24px;
+  background-color: #33577D;
+  height: 60px;
+  color: #f9fafb;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: 1px solid #012e5d;
+  border-radius: 4px;
+}
+.view-bank-button, .create-tests-button{
+  background-color: #012e5d;
+
+}
+@media only screen and (min-width: 401px)and (max-width:701px){
+  .subheading{
+    font-size: 24px !important;
+  }
+  h1{
+    font-size: 6vw !important;
+  }
+  h3{
+    font-size:4vw !important;
+    font-style: italic;
+  }
+
+
+}
+@media only screen and (min-width:701px){
+  .selection-container{
+    display: flex;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+    padding: 50px;
+    align-items: flex-start;
+    justify-content: space-around;
+
+  }
+  .educator-selection{
+    width: 30% !important;
+    padding: 10px;
+    justify-content: space-between;
+    height: 100%;
+  }
+  h3{
+    padding-top: 15px;
+    font-size: 48px !important;
+    font-style: italic;
+  }
+}

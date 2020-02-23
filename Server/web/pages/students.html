@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Student Question Bank</title>
+  <link rel="stylesheet" href="/css/master.css">
+  <link rel="stylesheet" href="/css/students.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="page">
+    <div class="section heading">
+      <img src="/images/byulogo.png" class="byulogo" alt="Logo">
+      <h1 style="font-size:8vw;">Scripture Practice Testing</h1>
+      <h4 class= "subhead" style= "font-size:6vw;">A tool for BYU students everywhere</h4>
+    </div>
+    <nav class="section navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">Students</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li ><a href="/index.html">Home</a></li>
+            <li class="active"><a href="students.html">Students</a></li>
+            <li><a href="educators.html">Educators</a></li>
+            <li class="disabled"><a href="nowhere.html">More Options Coming Soon!</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="section subheading">
+      <h3 style="font-size:5vw;">Test yourself</h3>
+      <h3 style="font-size:5vw;">+</h3>
+      <h3 style="font-size:5vw;">Assess Reading Level</h3>
+      <h3 style="font-size:5vw;">+</h3>
+      <h3 style="font-size:5vw;">Prepare For Exams</h3>
+    </div>
+    <div class="content">
+      <div class="section instructions">
+        <h4>How it works</h4>
+        <p>The RSC Scripture Question Bank consists of over 2500
+          multiple-choice questions designed to test understanding
+          of scripture content objectively. This means no interpretation - the questions
+          only aim to measure if you have read the scriptures carefully. While the entire
+          bank is not availble to students to browse through, students are free to create
+          practice tests from the bank for their needs. Just fill out the form and hit the "create"
+          button and you'll be on your way!</p>
+        </div>
+        <div class="section form">
+          <form id="testCreateForm" action="index.html" method="post">
+
+            <div class="form-heading">
+              <h1 class="form-heading">Customize your test</h1>
+            </div>
+
+            <div class="form-container" id="testContainer">
+              <div class="tab books-of-scripture">
+                <h6 class="form-question">What books of scripture are you testing on?</h6>
+                <h6>-Select all that apply-</h6>
+                <button type="button" class="accordion" id="bookOfMormonButton">Book of Mormon</button>
+                <div class="books-of-scripture-panel" id="booksInBookOfMormon">
+                  <input class="book-of-scripture-button"type="checkbox" id="1NephiButton"><label for="1NephiButton">1 Nephi</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="2NephiButton"><label class="disabled"for="2NephiButton">2 Nephi</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="jacobButton"><label class="disabled"for="jacobButton">Jacob</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="enosButton"><label class="disabled"for="enosButton">Enos</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="jaromButton"><label class="disabled"for="jaromButton">Jarom</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="omniButton"><label class="disabled" for="omniButton">Omni</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="womButton"><label class="disabled"for="womButton">Words of Mormon</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="mosiahButton"><label class="disabled"for="mosiahButton">Mosiah</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="almaButton"><label class="disabled"for="almaButton">Alma</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="helamanButton"><label class="disabled"for="helamanButton">Helaman</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="3NephiButton"><label class="disabled"for="3NephiButton">3 Nephi</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="4NephiButton"><label class="disabled"for="4NephiButton">4 Nephi</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="mormonButton"><label class="disabled"for="mormonButton">Mormon</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="etherButton"><label class="disabled"for="etherButton">Ether</label>
+                  <input class="book-of-scripture-button disable"type="checkbox" id="moroniButton"><label class="disabled"for="moroniButton">Moroni</label>
+                </div>
+                <button type="button" class="accordion disabled" id="newTestamentButton">New Testament</button>
+                <div class="books-of-scripture-panel"  id="booksInNewTestament">
+                  <button class="book-of-scripture-button"type="button" id="MatthewButton">Matthew</button>
+                  <button class="book-of-scripture-button"type="button" id="markButton">Mark</button>
+                  <button class="book-of-scripture-button"type="button" id="lukeButton">Luke</button>
+                  <button class="book-of-scripture-button"type="button" id="johnButton">John</button>
+                  <button class="book-of-scripture-button"type="button" id="actsButton">Acts</button>
+                  <button class="book-of-scripture-button"type="button" id="romansButton">Romans</button>
+                  <button class="book-of-scripture-button"type="button" id="1corinthButton">1 Corinthians</button>
+                  <button class="book-of-scripture-button"type="button" id="2corinthButton">2 Corinthians</button>
+                  <button class="book-of-scripture-button"type="button" id="galatiansButton">Galatians</button>
+                  <button class="book-of-scripture-button"type="button" id="ephButton">Ephesians</button>
+                  <button class="book-of-scripture-button"type="button" id="philButton">Phillipians</button>
+                  <button class="book-of-scripture-button"type="button" id="colButton">Collosians</button>
+                  <button class="book-of-scripture-button"type="button" id="1thesButton">1 Thessalonians</button>
+                  <button class="book-of-scripture-button"type="button" id="2thesButton">2 Thessalonians</button>
+                  <button class="book-of-scripture-button"type="button" id="1timButton">1 Timothy</button>
+                  <button class="book-of-scripture-button"type="button" id="2timButton">2 Timothy</button>
+                  <button class="book-of-scripture-button"type="button" id="titusButton">Titus</button>
+                  <button class="book-of-scripture-button"type="button" id="philemonButton">Philemon</button>
+                  <button class="book-of-scripture-button"type="button" id="hebrewsButton">Hebrews</button>
+                  <button class="book-of-scripture-button"type="button" id="jamesButton">James</button>
+                  <button class="book-of-scripture-button"type="button" id="1petButton">1 Peter</button>
+                  <button class="book-of-scripture-button"type="button" id="2petButton">2 Peter</button>
+                  <button class="book-of-scripture-button"type="button" id="1johnButton">1 John</button>
+                  <button class="book-of-scripture-button"type="button" id="2johnButton">2 John</button>
+                  <button class="book-of-scripture-button"type="button" id="3johnButton">3 John</button>
+                  <button class="book-of-scripture-button"type="button" id="judeButton">Jude</button>
+                  <button class="book-of-scripture-button"type="button" id="revelationButton">Revelation</button>
+                </div>
+                <button type="button" class="accordion disabled" id="oldTestamentButton">Old Testament</button>
+                <div class="books-of-scripture-panel" id="booksInOldTestament">
+                  <button class="book-of-scripture-button"type="button" id="genesisButton">Genesis</button>
+                  <button class="book-of-scripture-button"type="button" id="exodusButton">Exodus</button>
+                  <button class="book-of-scripture-button"type="button" id="levButton">Leviticus</button>
+                  <button class="book-of-scripture-button"type="button" id="numbButton">Numbers</button>
+                  <button class="book-of-scripture-button"type="button" id="DeutButton">Deuteronomy</button>
+                  <button class="book-of-scripture-button"type="button" id="JoshuaButton">Joshua</button>
+                  <button class="book-of-scripture-button"type="button" id="JudgesButton">Judges</button>
+                  <button class="book-of-scripture-button"type="button" id="RuthButton">Ruth</button>
+                  <button class="book-of-scripture-button"type="button" id="1samButton">1 Samuel</button>
+                  <button class="book-of-scripture-button"type="button" id="2samButton">2 Samuel</button>
+                  <button class="book-of-scripture-button"type="button" id="1kingsButton">1 Kings</button>
+                  <button class="book-of-scripture-button"type="button" id="2kingsButton">2 Kings</button>
+                  <button class="book-of-scripture-button"type="button" id="1chronButton">1 Chronicles</button>
+                  <button class="book-of-scripture-button"type="button" id="2chronButton">2 Chronicles</button>
+                  <button class="book-of-scripture-button"type="button" id="ezraButton">Ezra</button>
+                  <button class="book-of-scripture-button"type="button" id="nehemiahButton">Nehemiah</button>
+                  <button class="book-of-scripture-button"type="button" id="estherButton">Esther</button>
+                  <button class="book-of-scripture-button"type="button" id="jobButton">Job</button>
+                  <button class="book-of-scripture-button"type="button" id="psalmsButton">Psalms</button>
+                  <button class="book-of-scripture-button"type="button" id="proverbsButton">Proverbs</button>
+                  <button class="book-of-scripture-button"type="button" id="ecclesiastesButton">Ecclesiastes</button>
+                  <button class="book-of-scripture-button"type="button" id="sosButton">Songs of Solomon</button>
+                  <button class="book-of-scripture-button"type="button" id="isaiahButton">Isaiah</button>
+                  <button class="book-of-scripture-button"type="button" id="jeremiahButton">Jeremiah</button>
+                  <button class="book-of-scripture-button"type="button" id="lamentationsButton">Lamentations</button>
+                  <button class="book-of-scripture-button"type="button" id="ezekielButton">Ezekiel</button>
+                  <button class="book-of-scripture-button"type="button" id="danielButton">Daniel</button>
+                  <button class="book-of-scripture-button"type="button" id="hoseaButton">Hosea</button>
+                  <button class="book-of-scripture-button"type="button" id="joelButton">Joel</button>
+                  <button class="book-of-scripture-button"type="button" id="amosButton">Amos</button>
+                  <button class="book-of-scripture-button"type="button" id="obadiahButton">Obadiah</button>
+                  <button class="book-of-scripture-button"type="button" id="jonahButton">Jonah</button>
+                  <button class="book-of-scripture-button"type="button" id="micahButton">Micah</button>
+                  <button class="book-of-scripture-button"type="button" id="nahumButton">Nahum</button>
+                  <button class="book-of-scripture-button"type="button" id="habakkukButton">Habakkuk</button>
+                  <button class="book-of-scripture-button"type="button" id="zephButton">Zephaniah</button>
+                  <button class="book-of-scripture-button"type="button" id="haggaiButton">Haggai</button>
+                  <button class="book-of-scripture-button"type="button" id="zechariahButton">Zechariah</button>
+                  <button class="book-of-scripture-button"type="button" id="malachaiButton">Malachi</button>
+                </div>
+                <button type="button" class="accordion disabled" id="pearlOfGreatPriceButton">Pearl of Great Price</button>
+                <div class="books-of-scripture-panel" id="booksInPearlOfGreatPrice">
+                  <button class="book-of-scripture-button"type="button" id="mosesButton">Moses</button>
+                  <button class="book-of-scripture-button"type="button" id="abrahamButton">Abraham</button>
+                  <button class="book-of-scripture-button"type="button" id="FacsimileButton">Facsimiles</button>
+                  <button class="book-of-scripture-button"type="button" id="jsmButton">Joseph Smith - Matthew</button>
+                  <button class="book-of-scripture-button"type="button" id="jshButton">Joseph Smith - History</button>
+                  <button class="book-of-scripture-button"type="button" id="aofbutton">The Articles of Faith</button>
+                </div>
+                <button type="button" class="accordion disabled" id="dnCButton">Doctrine and Covenants</button>
+                <div class="books-of-scripture-panel" id="booksIndnC">
+                  <button class="book-of-scripture-button"type="button" id="introductionButton">Introduction</button>
+                  <button class="book-of-scripture-button"type="button" id="testimoniesButton">Testimonies</button>
+                  <button class="book-of-scripture-button"type="button" id="dnchalf1Button">D&C 1-65</button>
+                  <button class="book-of-scripture-button"type="button" id="dnchalf2Button">D&C 66-132</button>
+                  <button class="book-of-scripture-button"type="button" id="officialDeclarationsButton">Official Declarations</button>
+                </div>
+              </div>
+              <div class="tab chapters">
+                <h6 class="form-question">What chapters are you testing on?</h6>
+                <div class="chapters-panel" id="chaptersList">
+                  <p>[select books of scripture on the previous step in order to select your chapters]</p>
+                </div>
+              </div>
+              <div class="tab test-difficulty">
+                <h6 class="form-question">How difficult do you want your test?</h6>
+                <h6 class="form-question">Select one:</h6>
+                <div class="difficulty-option-container">
+
+                  <input class="difficulty-button"type="checkbox" id="1DiffButton">
+                  <label class= "difficulty-label" for="1DiffButton">1 - Do they already know the basic content
+                    or were they able to grasp it with a quick glance through the readings?</label>
+                    <input class="difficulty-button"type="checkbox" id="2DiffButton">
+                    <label class= "difficulty-label"  for="2DiffButton">2 - Do the students have a foundational,
+                      solid understanding of the basic content?</label>
+                      <input class="difficulty-button"type="checkbox" id="3DiffButton">
+                      <label class= "difficulty-label"  for="3DiffButton">3 - Have students read and discovered new
+                        content not available at just a glance?</label>
+                        <input class="difficulty-button"type="checkbox" id="4DiffButton">
+                        <label class= "difficulty-label"  for="4DiffButton">4 - Have the students begun to overcome
+                          their assumptions about what the book says?</label>
+                          <input class="difficulty-button"type="checkbox" id="5DiffButton">
+                          <label  class= "difficulty-label"  for="5DiffButton">5 - Have the students made an intentional
+                            and consistently careful reading of the book of mormon?</label>
+                          </div>
+
+                        </div>
+                        <div class="tab test-open-book">
+                          <h6 class="form-question">Is your test open-book or closed-book?</h6>
+                          <h6 class="form-question">Select one:</h6>
+                          <div class="bookedness-option-container">
+                            <input class="bookedness-button"type="checkbox" id="openButton">
+                            <label class= "bookedness-label"  for="openButton">Open-Book</label>
+                            <input class="bookedness-button"type="checkbox" id="closedButton">
+                            <label  class= "bookedness-label"  for="closedButton">Closed-Book</label>
+                          </div>
+
+                        </div>
+                        <div class="tab test-length">
+                          <h6 class="form-question">How many questions would you like?</h6>
+                          <input id="lengthInput" min="20" max="50"type="number"></input>
+                        </div>
+                        <div class="next-prev-container" style="overflow:auto;">
+                          <div style="float:right;">
+                            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                          </div>
+                        </div>
+                        <div style="text-align:center;margin-top:40px;">
+                          <span class="step"></span>
+                          <span class="step"></span>
+                          <span class="step"></span>
+                          <span class="step"></span>
+                          <span class="step"></span>
+
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+
+                </div>
+                <div class="footer">
+                  <p>https://github.com/ajudd22/Question-Bank</p>
+
+                </div>
+              </div>
+              <script src="/scripts/master.js" type="text/javascript"></script>
+
+            </body>
+            </html>

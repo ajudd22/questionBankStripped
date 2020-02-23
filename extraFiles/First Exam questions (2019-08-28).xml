@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+   <question type="multichoice">
+      <questiontext format="html">
+         <text><![CDATA[Just before the Nephites and Lamanites become separate peoples, Laman and Lemuel murmur against Nephi because of what?]]></text>
+      </questiontext>
+      <defaultgrade>1</defaultgrade>
+      <single>1</single>
+      <shuffleanswers>true</shuffleanswers>
+      <answernumbering>abc</answernumbering>
+      <answer fraction="0" format="html">
+         <text><![CDATA[The death of their father]]></text>
+      </answer>
+      <answer fraction="0" format="html">
+         <text><![CDATA[The lack of food]]></text>
+      </answer>
+      <answer fraction="0" format="html">
+         <text><![CDATA[The toiling of their women]]></text>
+      </answer>
+      <answer fraction="100" format="html">
+         <text><![CDATA[Nephi's status as their teacher]]></text>
+      </answer>
+   </question>
+</quiz>

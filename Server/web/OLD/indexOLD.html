@@ -1,0 +1,338 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title> Question Bank server </title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+
+	<!-- Place favicon.ico in the root directory -->
+
+	<link rel="stylesheet" href="css/main.css">
+
+	<script type="text/javascript">
+
+	function submit()
+	{
+		var handle = document.getElementById("handleBox").value;
+		var requestBody = document.getElementById("requestBox").value;
+		var token = document.getElementById("authToken").value;
+
+		var method = "post";
+		if(handle.includes("person") || handle.includes("event"))
+		{
+			method = "get";
+		}
+
+		send(handle,requestBody, method, token);
+		return false;
+	}
+
+	function send(path, params, method, token)
+	{
+		var obj = new XMLHttpRequest();
+		obj.onreadystatechange = function () {
+			var response = obj.responseText;
+			if (response) {
+				// Try a few possible field types from the user
+				try {
+					var responseJson = JSON.parse(response);
+					if (responseJson.authToken) {
+						document.getElementById("authToken").value = responseJson.authToken;
+					}
+					else if (responseJson.authtoken) {
+						document.getElementById("authToken").value = responseJson.authtoken;
+					}
+					else if (responseJson.auth) {
+						document.getElementById("authToken").value = responseJson.auth;
+					}
+					else if (responseJson.token) {
+						document.getElementById("authToken").value = responseJson.token;
+					}
+				} catch (error) {
+					console.log("Invalid JSON format, displaying raw response data");
+				}
+				document.getElementById("response").value = formatJson(response);
+			}
+		};
+		obj.open(method,path,false);
+		obj.setRequestHeader("Content-Type", "application/json");
+		obj.setRequestHeader("Authorization", token);
+		obj.send(params);
+	}
+
+	function formatJson(inputText)
+	{
+		var temp = "";
+		var indent = 0;
+		for(var i in inputText)
+		{
+			var char = inputText[i];
+			if(char != null)
+			{
+				if(char === ']' || char === '}')
+				{
+					temp += "\n";
+					indent--;
+					for(var j = 0; j < indent; j++)
+					{
+						temp += '\t';
+					}
+
+				}
+
+				temp += char;
+
+				if (char === ',')
+				{
+					temp += "\n";
+
+					for(j = 0; j < indent; j++)
+					{
+						temp += '\t';
+					}
+
+				}
+				if(char === '{' || char === '[')
+				{
+					temp += "\n";
+					indent++;
+					for(j = 0; j < indent; j++)
+					{
+						temp += '\t';
+					}
+				}
+			}
+		}
+
+		return temp;
+	}
+
+	function login()
+	{
+		var x =document.getElementById("requestBox");
+		x.style.display = "block";
+		var f = document.getElementById("test_form");
+		f.style.display = "none";
+		window.scrollTo(0,document.body.scrollHeight);
+		document.getElementById("requestBox").value = formatJson("{\"netID\":\"netID\",\"password\":\"password\"}");
+	}
+
+	function register()
+	{
+		var x =document.getElementById("requestBox");
+		x.style.display = "block";
+		var f = document.getElementById("test_form");
+		f.style.display = "none";
+		window.scrollTo(0,document.body.scrollHeight);
+		document.getElementById("requestBox").value = formatJson("{\"netID\":\"netID\",\"password\":\"password\"}");
+	}
+	function createTest()
+	{
+		window.scrollTo(0,document.body.scrollHeight);
+
+		document.getElementById("handleBox").value = "/createTest";
+
+		<!--var x =document.getElementById("requestBox");-->
+		<!--x.style.display = "none";-->
+		<!--var f = document.getElementById("test_form");-->
+		<!--f.style.display = "block";-->
+
+		<!--var checkboxes = document.getElementsByTagName('input');-->
+
+		<!--for (var i=0; i<checkboxes.length; i++)  {-->
+		<!--if (checkboxes[i].type == 'checkbox')   {-->
+		<!--checkboxes[i].checked = false;-->
+		<!--}-->
+		<!--else if (checkboxes[i].type == 'select')   {-->
+		<!--i.select-->
+		<!--}-->
+
+		<!--}-->
+
+
+	}
+
+	function clear()
+	{
+		window.scrollTo(0,document.body.scrollHeight);
+		document.getElementById("handleBox").value = "/clear";
+		document.getElementById("requestBox").value = "";
+	}
+
+	function importer()
+	{
+		window.scrollTo(0,document.body.scrollHeight);
+		document.getElementById("handleBox").value = "/importer";
+		document.getElementById("requestBox").value = formatJson("{\"items\":[]}");
+	}
+
+
+
+	</script>
+</head>
+<body>
+	<div style="text-align:center;">
+		<h1>
+			This is the Question Bank server used to power the RSC Scripture Question Bank.
+		</h1>
+		<h5>
+			This server should only be edited by research assistants of the RSC with authorization from Dr Joseph Spencer
+		</h5>
+	</div>
+	<div>
+		<div style="border: 2px solid black; width:45%;display: inline-block" id = "prof_use">
+			<h1 style="padding-left:1cm; text-decoration: underline;">Professor Use</h1>
+			<ul>
+				<li>
+					<a href="javascript:clear()" >/clear</a> Admin only
+
+				</li>
+				<li>
+					<a href="javascript:importer()">/importer</a> Admin only.
+
+				</li>
+				<li>
+					<a href="javascript:createTest()" >/createTest</a> Professor use only
+
+				</li>
+
+			</ul>
+		</div>
+		<div style="border: 2px solid black; margin:5px; width: 45%; display: inline-block" id = "stud_use">
+			<h1 style="padding-left:1cm; text-decoration: underline;">Student use:</h1>
+			<ul>
+				<li>
+					<a href="javascript:login()" >/user/login</a>
+				</li>
+				<li>
+					<a href="javascript:register()" >/user/register</a>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+
+	<div id="test_form">
+		<h5>Create a new test:</h5>
+		<form name = "createTestForm" method = "GET" action = "/createTest">
+			<fieldset>
+				<label for="length">Test length</label>
+				<input type = "number" name = "length" id = "length" placeholder = "25" size = "3" onfocus="this.select()">
+				<br>
+				<label for="difficulty">Level of difficulty</label>
+				<input type = "number" name = "difficulty" id = "difficulty" placeholder = "3" size = "1" onfocus="this.select()">
+				<br>
+				<label for="closed_book">Closed book</label>
+				<input type="checkbox" id="closed_book" name="closed_book"
+				checked>
+
+			</fieldset>
+			<fieldset>
+				<label for="1Nephi">1 Nephi</label>
+				<input type = "checkbox" name ="1Nephi" id="1Nephi" checked>
+				<select class = "select-css" name = "chapters" id = "1ne" multiple onclick="show()"></select>
+
+				<br>
+				<label for="2Nephi">2 Nephi</label>
+				<input type = "checkbox" name="2Nephi" id="2Nephi" checked>
+				<select class = "select-css"name = "chapters" id = "2ne"multiple></select>
+
+				<br>
+				<label for="Jacob">Jacob</label>
+				<input type = "checkbox" name = "Jacob" id = "Jacob"checked>
+				<select class = "select-css"name = "chapters" id = "jac"multiple></select>
+
+				<br>
+				<input type = "checkbox" name = "Enos" id = "Enos"checked>
+				<label for="Enos">Enos</label>
+				<select class = "select-css"name = "chapters" id = "eno"multiple></select>
+
+				<br>
+				<label for="Jarom">Jarom</label>
+				<input type = "checkbox" name = "Jarom" id = "Jarom" checked>
+				<select class = "select-css"name = "chapters" id = "jar"multiple></select>
+
+				<br>
+				<label for="Omni">Omni</label>
+				<input type = "checkbox" name = "Omni" id = "Omni" checked>
+				<select class = "select-css"name = "chapters" id = "omn"multiple></select>
+
+				<br>
+				<label for="WoM">Words of Mormon</label>
+				<input type = "checkbox" name = "Words of Mormmon" id = "WoM" checked>
+				<select class = "select-css"name = "chapters" id = "wom"multiple></select>
+
+				<br>
+				<label for="Mosiah">Mosiah</label>
+				<input type = "checkbox" name = "Mosiah" id = "Mosiah" checked>
+				<select class = "select-css"name = "chapters" id = "mos"multiple></select>
+
+				<br>
+				<label for="Alma">Alma</label>
+				<input type = "checkbox" name = "Alma" id = "Alma"checked>
+				<select class = "select-css"name = "chapters" id = "alm"multiple></select>
+
+				<br>
+				<label for="Helaman">Helaman</label>
+				<input type = "checkbox" name = "Helaman" id = "Helaman"checked>
+				<select class = "select-css"name = "chapters" id = "hel"multiple></select>
+
+				<br>
+				<label for="3N">3 Nephi</label>
+				<input type = "checkbox" name = "3Nephi" id = "3N" checked>
+				<select class = "select-css"name = "chapters" id = "3ne"multiple></select>
+
+				<br>
+				<label for="4n">4 Nephi</label>
+				<input type = "checkbox" name = "4Nephi" id = "4N" checked>
+				<select class = "select-css"name = "chapters" id = "4ne"multiple></select>
+
+				<br>
+				<label for="Mormon">Mormon</label>
+				<input type = "checkbox" name = "Mormon"id = "Mormon" checked>
+				<select class = "select-css"name = "chapters" id = "morm"multiple></select>
+
+				<br>
+				<label for="Ether">Ether</label>
+				<input type = "checkbox" name = "Ether" id = "Ether" checked>
+				<select class = "select-css"name = "chapters" id = "eth"multiple></select>
+
+				<br>
+				<label for="Moroni">Moroni</label>
+				<input type = "checkbox" name = "Moroni" id="Moroni"checked>
+				<select class = "select-css"name = "chapters" id = "moro"multiple></select>
+
+				<br>
+			</fieldset>
+		</form>
+	</div>
+	<div class="w3-row forumDiv">
+		<div class="w3-col m4">
+			Handle:<input type="text" id="handleBox" name="handleBox" style="width: 400px">
+		</div>
+		<div class="w3-col m5">
+			Authorization token: <input type="text" id="authToken" name="authToken" style="width: 400px;">
+			<input type="button" name="Submit" value="Submit" onclick="submit()">
+		</div>
+	</div>
+
+	<div class="w3-row" style="margin:10px;">
+		<p class="w3-col w3-container center" style="width:3%"/>
+		<div class="w3-col w3-container bottom" style="width:45%">
+			Request Body: <textarea type="text" id="requestBox" name="requestBox" class="requestBody"></textarea>
+		</div>
+		<p class="w3-col w3-container center" style="width:3%"/>
+		<div class="w3-col w3-container bottom" style="width:45%">
+			Response From the server: <textarea type="text" id="response" class="responseBody" readonly></textarea>
+			<div>
+				<p class="w3-col w3-container center" style="width:3%"/>
+			</div>
+		</body>
+		</html>

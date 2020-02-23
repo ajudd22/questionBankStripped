@@ -1,0 +1,238 @@
+.subheading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tab {
+  display: none;
+}
+h3{
+  padding: 15px;
+  text-align: center;
+  color:##f7fafd !important;
+}
+.form-question{
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.form-heading{
+  color:##f7fafd !important;
+}
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #012e5d;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: .5;
+}
+.step.active {
+  opacity: 1;
+}
+.step.finish {
+  background-color: #4CAF50;
+}
+.next-prev-container{
+  margin-top: 15px;
+}
+.form-container{
+  border: 2px solid #012e5d;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.unavailable{
+  text-align: center;
+}
+.tab{
+  width: 80%;
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+button.accordion:after {
+  content: '\25bc';
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+button.accordion.active:after {
+  content: "\25b2";
+  color: #FFF;
+}
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.6s ease-in-out;
+  opacity: 0;
+}
+.panel.show {
+  opacity: 1;
+  max-height: 500px;
+}
+.panel.hide {
+  opacity: 0;
+  height: 0;
+}
+.books-of-scripture-panel, .chapters-panel{
+  background-color: #7699bc;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display:none;
+  overflow: hidden;
+}
+.chapters-panel{
+  display: block !important;
+}
+label{
+  font-size: 12px;
+  width: 20%;
+  height:40px;
+  padding-top: 10px;
+  background-color: #7699bc;
+  color: white;
+  text-align: center;
+  margin:2px;
+  cursor: pointer;
+}
+.book-of-scripture-button:checked + label, .chapter-button:checked +label
+, .difficulty-button:checked +label, .bookedness-button:checked +label{
+  background-color:#111a22;
+}
+.book-of-scripture-button, .chapter-button, .difficulty-button, .bookedness-button{
+  display: none;
+}
+
+.chapter-label{
+  width: 10%;
+}
+.difficulty-label{
+  width: 100%;
+  height: 60px;
+}
+.bookedness-label{
+  width: 40%;
+}
+#lengthInput{
+  width: 50%;
+}
+.submit-button{
+  float: right;
+  font-size: 10px;
+  background-color: #012e5d;
+  color: #f9fafb;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: 1px solid #012e5d;
+  border-radius: 4px;
+  margin: 4px;
+}
+.instructions{
+  padding: 7px;
+}
+.form-container
+{
+  height:70%;
+}
+.test-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.test-question-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+}
+.question-head{
+  text-align: left;
+
+}
+.test-option{
+  width: 80%;
+}
+
+
+p{
+  font-weight: bold;
+  text-align: center;
+  font-style: italic;
+}
+
+@media only screen and (min-width: 401px)and (max-width:801px){
+  .subhead{
+    font-size: 24px !important;
+  }
+  p{
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .form-container{
+    margin: 5px;
+    max-width: 100%;
+    height: 150px;
+  }
+  .form-container{
+    height:40%;
+  }
+  .instructions{
+    padding:5px;
+  }
+}
+
+@media only screen and (min-width: 801px){
+  heading{
+    width: 200px;
+  }
+  .content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .subheading{
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  h3{
+    font-size: 3vw !important;
+  }
+  .instructions{
+    width: 40%;
+    order:2;
+    margin:5%;
+    margin-top: 0px !important;
+  }
+  .form{
+    width: 40%;
+    order:1;
+    margin: 5%;
+    margin-top: 0px !important;
+  }
+  }

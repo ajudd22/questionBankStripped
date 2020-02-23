@@ -1,0 +1,79 @@
+*{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+p.footer{
+  width:100%;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.page{
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ width: 100%;
+ height: 100%;
+ background-color: #B2D6FF;
+
+}
+.byulogo{
+  max-height: 20%
+}
+.navbar{
+  margin-bottom: 0px !important;
+
+}
+.disabled {
+  opacity: 0.9;
+  cursor: not-allowed !important;
+}
+
+.content{
+  width: 100%;
+}
+.section{
+  width: 100%;
+  min-height: 100px;
+}
+.heading{
+  background-color: #012e5d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nav-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  h1,h3,h4{
+    color:#f7fafd !important;
+    text-align: center;
+}
+@media only screen and (min-width: 801px) {
+  h1{
+    font-size: 48px !important;
+    order:1;
+  }
+  h3, h4{
+    font-size: 20px !important;
+    order:2;
+  }
+  .heading{
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 200px;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  img{
+    order: 3;
+    height:80%;
+    float: right;
+  }
+
+
+}
