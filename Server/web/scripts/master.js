@@ -68,12 +68,16 @@ function requestTest(){
   var formdata = {'sections': hashMap, 'difficulty': parseInt(difficulty),
   'closedBook': closedbook, 'length': parseInt(length), 'assortment': 0};
   var formstring = JSON.stringify(formdata);
+
   var obj = new XMLHttpRequest();
   obj.onreadystatechange = function (){
      if (obj.readyState == 4) displayTest(obj);
   }
 
   obj.open(method,path, true);
+  console.log(method);
+  console.log(path);
+  console.log(formstring);
   obj.send(formstring);
   console.log("sent");
   return false;
