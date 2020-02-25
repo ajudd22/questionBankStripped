@@ -1,6 +1,27 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
+function gradeTest(){
+  var correctbuttons= document.getElementsByClassName('correct');
+  var labels = Array.from(document.getElementsByClassName('test-option'));
+  console.log(labels);
+  var total= 0
+  for (let i =0; i <correctbuttons.length; i++)
+  {
+    var label = labels.filter(function(label){
+      return label.htmlFor == correctbuttons[i].id;
+    })
+    if (correctbuttons[i].checked)
+    {
+      label[0].style.backgroundColor = "#00b300";
+      total++;
+    }
 
+
+  }
+  console.log(total);
+  console.log(correctbuttons.length/total + "%");
+
+}
 
 function displayTest(test){
   console.log("Here's your test!");
@@ -12,15 +33,29 @@ function displayTest(test){
   for (let i = 0; i < testObj.Test.length; i ++){
     s += "<div class = 'test-question-container'>";
     s += "<h4 class='question-head'>"+ testObj.Test[i].head + "</h4>";
-    s += "<input type='radio' class='option correct' id='"+ i +"correct' name = '"+ i +"q'><label class = 'test-option' for= '"+ i +"correct'>"+ testObj.Test[i].c +"</label><br>";
-    s += "<input type='radio' class='option incorrect' id = '"+ i +"incor1' name = '"+ i +"q'><label class = 'test-option' for= '"+ i +"incor1'>"+ testObj.Test[i].op1 +"</label><br>";
-    s += "<input type='radio' class='option incorrect' id = '"+ i +"incor2' name = '"+ i +"q'><label class = 'test-option' for= '"+ i +"incor2'>"+ testObj.Test[i].op2 +"</label><br>";
-    s += "<input type='radio' class='option incorrect' id = '"+ i +"incor3' name = '"+ i +"q'><label class = 'test-option' for= '"+ i +"incor3'>"+ testObj.Test[i].op3 +"</label><br>";
+    s += "<div  class = 'item-shuffle test-question-container'>";
+    s += "<div><input type='radio' class='option correct' id='"+ i +"correct' name = '"+ i +"q'><label class = 'test-option' for= '"+ i +"correct'>"+ testObj.Test[i].c +"</label></div>";
+    s += "<div><input type='radio' class='option incorrect' id = '"+ i +"incor1' name = '"+ i +"q'><label class = 'test-option' for= '"+ i +"incor1'>"+ testObj.Test[i].op1 +"</label></div>";
+    s += "<div><input type='radio' class='option incorrect' id = '"+ i +"incor2' name = '"+ i +"q'><label class = 'test-option' for= '"+ i +"incor2'>"+ testObj.Test[i].op2 +"</label></div>";
+    s += "<div><input type='radio' class='option incorrect' id = '"+ i +"incor3' name = '"+ i +"q'><label class = 'test-option' for= '"+ i +"incor3'>"+ testObj.Test[i].op3 +"</label></div>";
+    s += "</div>";
     s += "</div>";
   }
+  s += "<input id = 'testSubmit' type='button' value='Submit'>"
   s += "</div>";
   document.getElementById('testContainer').innerHTML = s;
-  document.getElementsByClassName('content')[0].style.flexDirection = "column";
+
+
+  var shuffleContainers = document.getElementsByClassName('item-shuffle');
+  for (let j = 0; j <shuffleContainers.length; j++){
+    for (var h = shuffleContainers[j].children.length; h>=0; h--){
+      shuffleContainers[j].appendChild(shuffleContainers[j].children[Math.random() * h | 0])
+    }
+  }
+  document.getElementById('testSubmit').addEventListener("click", gradeTest);
+
+
+document.getElementsByClassName('content')[0].style.flexDirection = "column";
 }
 function requestTest(){
   var books = Array.from(document.getElementsByClassName('book-of-scripture-button'));
@@ -71,7 +106,7 @@ function requestTest(){
 
   var obj = new XMLHttpRequest();
   obj.onreadystatechange = function (){
-     if (obj.readyState == 4) displayTest(obj);
+    if (obj.readyState == 4) displayTest(obj);
   }
 
   obj.open(method,path, true);

@@ -4,7 +4,6 @@ import Request.TestRequest;
 import Response.TestResponse;
 import Service.TestService;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -17,9 +16,9 @@ public class TestRequestHandler extends HandlerHelper implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        System.out.println("/createTest");
+        System.out.println("/createTest handler");
         if (exchange.getRequestMethod().toLowerCase().equals("post")){
-            System.out.println("get request");
+            System.out.println("request - POST confirmed");
 
             InputStream reqBody = exchange.getRequestBody();
             String reqData = readString(reqBody);
@@ -41,9 +40,6 @@ public class TestRequestHandler extends HandlerHelper implements HttpHandler {
 
 
             exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
-//            gson = new GsonBuilder()
-//                    .disableHtmlEscaping()
-//                    .create();
 
             String myResult = gson.toJson(result);
 
@@ -51,79 +47,11 @@ public class TestRequestHandler extends HandlerHelper implements HttpHandler {
             writeString(myResult, responseBody);
             responseBody.close();
         }
+        else{
+            exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+        }
 
      }
 
-    // private Document createXML (TestResponse response)
-    // {
-    //
-    //     String headtext = "Just before the Nephites and Lamanites " +
-    //             "become separate peoples, Laman and Lemuel murmur " +
-    //             "against Nephi because of what?";
-    //     String c = "The death of their father";
-    //     String o1 = "The lack of food";
-    //     String o2 = "The toiling of their women";
-    //     String o3 = "Nephi's status as their teacher";
-    //     //Create XML file
-    //     DocumentBuilderFactory dbFactory =
-    //             DocumentBuilderFactory.newInstance();
-    //     DocumentBuilder dBuilder = null;
-    //     try {
-    //         dBuilder = dbFactory.newDocumentBuilder();
-    //     } catch (ParserConfigurationException e) {
-    //         e.printStackTrace();
-    //     }
-    //     Document doc = dBuilder.newDocument();
-    //
-    //     // root element
-    //     Element rootElement = doc.createElement("quiz");
-    //     doc.appendChild(rootElement);
-    //
-    //     //Item element
-    //     Element item = doc.createElement("question");
-    //     rootElement.appendChild(item);
-    //
-    //     //Item attribute = multichoice
-    //     Attr attr = doc.createAttribute("type");
-    //     attr.setValue("multichoice");
-    //     item.setAttributeNode(attr);
-    //
-    //     //Head Element: "Question text"
-    //     Element head = doc.createElement("questiontext");
-    //     Attr attr1 = doc.createAttribute("format");
-    //     attr1.setValue("html");
-    //     head.setAttributeNode(attr1);
-    //     item.appendChild(head);
-    //
-    //     head.appendChild(doc.createTextNode("<![CDATA["+headtext+"]]>" ));
-    //
-    //    Element defaultgrade = doc.createElement("defaultgrade");
-    //    defaultgrade.appendChild(doc.createTextNode("1"));
-    //    item.appendChild(defaultgrade);
-    //
-    //     Element single = doc.createElement("single");
-    //     defaultgrade.appendChild(doc.createTextNode("1"));
-    //     item.appendChild(single);
-    //     Element shuffleanswers = doc.createElement("shuffleanswers");
-    //     defaultgrade.appendChild(doc.createTextNode("true"));
-    //     item.appendChild(shuffleanswers);
-    //     Element answernumbering = doc.createElement("answernumbering");
-    //     defaultgrade.appendChild(doc.createTextNode("abc"));
-    //     item.appendChild(answernumbering);
-    //
-    //
-    //     Element answer = doc.createElement("answer");
-    //     Attr attr2 = doc.createAttribute("fraction");
-    //     attr2.setValue("0");
-    //     Attr attr3 = doc.createAttribute("format");
-    //     attr3.setValue("html");
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    // }
+
 }

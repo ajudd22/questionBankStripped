@@ -40,10 +40,7 @@ public class Server{
 
         System.out.println("Creating contexts");
         server.createContext("/", new DefaultHandler());
-      //  server.createContext("/user/register", new RegisterHandler());
-      //  server.createContext("/user/login", new LoginHandler());
         server.createContext("/createTest", new TestRequestHandler());
-    //    server.createContext("/importer", new ImportHandler());
 
         database.createDBTables();
         System.out.println("Starting server");

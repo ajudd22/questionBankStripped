@@ -53,8 +53,8 @@ public class TestService {
             response.setMessage("Not enough questions in bank to create a test as requested.");
         }
         response.setQuestions(test);
-
-        printTest(test);
+        System.out.println("Test is ready");
+       // printTest(test);
         return response;
     }
     private int sumquestions (int[] roundedLength)
